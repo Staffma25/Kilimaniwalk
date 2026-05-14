@@ -1,0 +1,122 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #1a1a2e;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-inter);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0f172a;
+    --foreground: #e2e8f0;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-inter), Calibri, Arial, Helvetica, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.font-heading {
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+.gold-divider {
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    #b8960c,
+    #f5e6b3,
+    #123a67,
+    #b8960c,
+    transparent
+  );
+}
+
+.gold-cursor {
+  position: fixed;
+  z-index: 60;
+  pointer-events: none;
+  width: 12px;
+  height: 12px;
+  border-radius: 9999px;
+  background: #b8960c;
+  box-shadow: 0 0 22px #b8960c;
+  transform: translate(-50%, -50%);
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.shimmer-section {
+  background-image: linear-gradient(
+    120deg,
+    rgba(184, 150, 12, 0.09) 0%,
+    rgba(245, 230, 179, 0.2) 50%,
+    rgba(184, 150, 12, 0.09) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 5s linear infinite;
+}
+
+@keyframes ticker {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.logo-track {
+  animation: ticker 24s linear infinite;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-up {
+  animation: fadeUp 900ms ease-out both;
+}
+
+@keyframes heroDrift {
+  0% {
+    transform: scale(1.05) translateY(0px);
+  }
+  50% {
+    transform: scale(1.08) translateY(-8px);
+  }
+  100% {
+    transform: scale(1.05) translateY(0px);
+  }
+}
+
+.hero-parallax {
+  animation: heroDrift 14s ease-in-out infinite;
+}
