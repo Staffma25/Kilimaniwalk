@@ -1,97 +1,117 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
-import { Building2, Car, Sparkles } from "lucide-react";
 
-const highlights = [
+const floorPlans = [
   {
-    icon: Car,
-    title: "Arrival & parking",
-    text: "Secure basement parking and clear circulation set a professional first impression for shoppers, diners, and office tenants alike.",
+    title: "Ground Floor Plan",
+    subtitle: "Arrival, anchors, and high-footfall retail frontage",
+    image: "/floor-plan-ground.png",
+    accent: "from-[#123A67]/80 via-[#1A1A2E]/65 to-[#B8960C]/60",
   },
   {
-    icon: Sparkles,
-    title: "Retail, dining & leisure",
-    text: "Multiple levels combine high-visibility retail, anchor supermarket space, terraces, and a leisure-led mix of restaurants, cafés, and entertainment so the building stays active from morning through evening.",
+    title: "First Floor Plan",
+    subtitle: "Balanced mix of retail units, terraces, and circulation",
+    image: "/floor-plan-first.png",
+    accent: "from-[#123A67]/78 via-[#1A1A2E]/62 to-[#B8960C]/56",
   },
   {
-    icon: Building2,
-    title: "Offices, events & upper levels",
-    text: "Light-filled workspace rises through dedicated office floors, with conference and event capacity and upper levels designed for prestige, privacy, and panoramic city views—including rooftop access at the top of the stack.",
+    title: "Second Floor Plan",
+    subtitle: "Upper-level retail and dining zones with efficient cores",
+    image: "/floor-plan-second.png",
+    accent: "from-[#123A67]/76 via-[#1A1A2E]/60 to-[#B8960C]/54",
   },
 ];
 
-const container = {
-  hidden: { opacity: 0 },
-  show: {
-    opacity: 1,
-    transition: { staggerChildren: 0.08, delayChildren: 0.06 },
-  },
-};
-
-const item = {
-  hidden: { opacity: 0, y: 14 },
-  show: {
-    opacity: 1,
-    y: 0,
-    transition: { type: "spring", stiffness: 380, damping: 28 },
-  },
-};
+const verticalStack = [
+  { level: "3rd Floor", use: "Entertainment zone" },
+  { level: "4th Floor", use: "Office spaces" },
+  { level: "5th Floor", use: "Conference halls" },
+  { level: "6th - 9th Floors", use: "Premium offices" },
+];
 
 export default function FloorsSection() {
   return (
-    <section className="mx-auto max-w-7xl px-6 py-12">
+    <section className="mx-auto max-w-7xl px-6 py-12 md:py-16">
       <motion.div
         initial={{ opacity: 0, y: 12 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-40px" }}
         transition={{ duration: 0.5 }}
       >
-        <h2 className="font-heading text-3xl text-[#123A67] md:text-4xl">Floors</h2>
+        <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[#B8960C]">
+          Floors & architectural design
+        </p>
+        <h2 className="mt-2 font-heading text-3xl text-[#123A67] md:text-4xl">
+          Floor Plans
+        </h2>
         <p className="mt-2 max-w-3xl text-sm text-slate-600 md:text-base">
-          Kilimani Walk is organised as a full vertical destination: parking and service levels at
-          the base, retail and lifestyle through the middle, and modern offices, meetings, and
-          skyline-level workspace above—so shopping, dining, leisure, and business share one
-          address without each use feeling crowded into a single generic floor plate.
+          Ground, first, and second floor drawings are shown below.
         </p>
       </motion.div>
 
-      <motion.div
-        className="mt-8 grid gap-4 md:grid-cols-3"
-        variants={container}
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true, margin: "-60px" }}
-      >
-        {highlights.map((block) => {
-          const Icon = block.icon;
-          return (
+      <div className="mt-10 grid gap-6">
+        {floorPlans.map((plan, index) => (
           <motion.article
-            key={block.title}
-            variants={item}
-            whileHover={{ y: -3, transition: { duration: 0.2 } }}
-            className="group rounded-xl border border-[#B8960C]/40 bg-gradient-to-br from-white via-[#F5E6B3]/20 to-[#EAF2FF]/50 p-5 shadow-sm transition-shadow duration-300 hover:border-[#B8960C]/65 hover:shadow-lg"
+            key={plan.title}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-40px" }}
+            transition={{ duration: 0.5, delay: index * 0.06 }}
+            className="overflow-hidden rounded-3xl border border-[#B8960C]/35 bg-white shadow-xl"
           >
-            <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:gap-4 md:flex-col md:gap-3">
-              <motion.div
-                className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[#B8960C]/15 text-[#B8960C] ring-1 ring-[#B8960C]/25 transition group-hover:bg-[#B8960C]/25 group-hover:ring-[#B8960C]/40"
-                whileHover={{ scale: 1.06, rotate: -3 }}
-                transition={{ type: "spring", stiffness: 400, damping: 18 }}
-              >
-                <Icon className="h-5 w-5" strokeWidth={2} aria-hidden />
-              </motion.div>
-              <div className="min-w-0">
-                <h3 className="font-heading text-base font-semibold text-[#1A1A2E] md:text-lg">
-                  {block.title}
-                </h3>
-                <p className="mt-2 text-xs leading-relaxed text-slate-600 md:text-sm">
-                  {block.text}
-                </p>
+            <div className="relative h-24 overflow-hidden">
+              <div className={`absolute inset-0 bg-gradient-to-r ${plan.accent}`} />
+              <div className="relative flex h-full items-center justify-between px-5 text-white md:px-7">
+                <div>
+                  <h3 className="font-heading text-xl md:text-2xl">{plan.title}</h3>
+                  <p className="mt-1 text-xs text-slate-100 md:text-sm">{plan.subtitle}</p>
+                </div>
+                <span className="rounded-full border border-white/40 px-3 py-1 text-xs font-medium uppercase tracking-[0.16em] text-[#F5E6B3]">
+                  Drawing
+                </span>
               </div>
             </div>
+            <div className="relative aspect-[16/10] w-full bg-[#F8FAFC]">
+              <Image
+                src={plan.image}
+                alt={`${plan.title} architectural drawing`}
+                fill
+                className="object-contain"
+                sizes="(max-width: 1024px) 100vw, 1120px"
+              />
+            </div>
           </motion.article>
-          );
-        })}
+        ))}
+      </div>
+
+      <motion.div
+        className="mt-10 rounded-3xl border border-[#B8960C]/35 bg-gradient-to-b from-white via-[#FFFDF6] to-white p-6 shadow-lg md:p-8"
+        initial={{ opacity: 0, y: 16 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-50px" }}
+        transition={{ duration: 0.5 }}
+      >
+        <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[#B8960C]">
+          Full development stack
+        </p>
+        <h3 className="mt-2 font-heading text-2xl text-[#123A67] md:text-3xl">
+          Upper floors at a glance
+        </h3>
+        <div className="mt-5 grid gap-3 md:grid-cols-2">
+          {verticalStack.map((item) => (
+            <article
+              key={item.level}
+              className="rounded-xl border border-[#B8960C]/30 bg-white p-4 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md"
+            >
+              <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#B8960C]">
+                {item.level}
+              </p>
+              <h4 className="mt-1 font-heading text-lg text-[#123A67]">{item.use}</h4>
+            </article>
+          ))}
+        </div>
       </motion.div>
     </section>
   );

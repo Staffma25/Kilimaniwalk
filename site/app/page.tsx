@@ -30,7 +30,7 @@ export default function Home() {
       <main>
         <section className="relative flex min-h-[80vh] items-center justify-center overflow-hidden">
           <Image
-            src={encodeURI("/WhatsApp Image 2026-02-17 at 14.44.42.jpeg")}
+            src="/hero-kilimani-walk.png"
             alt="Kilimani Walk mixed-use development exterior"
             fill
             className="scale-105 object-cover hero-parallax"
@@ -134,22 +134,31 @@ export default function Home() {
 
         <div className="gold-divider" />
 
-        <section className="bg-gradient-to-b from-white via-[#FFE4E4] to-white px-6 py-20 text-[#1A1A2E]">
-          <div className="mx-auto max-w-7xl">
-            <h2 className="font-heading text-center text-4xl text-[#123A67] drop-shadow-[0_1px_0_rgba(185,28,28,0.18)]">
+        <section className="relative overflow-hidden px-6 py-20 text-white">
+          <Image
+            src="/hero-kilimani-walk.png"
+            alt=""
+            fill
+            className="object-cover"
+            aria-hidden
+          />
+          <div className="absolute inset-0 bg-[#0E1D33]/76" />
+          <div className="absolute inset-0 bg-gradient-to-br from-[#123A67]/45 via-[#1A1A2E]/55 to-[#B8960C]/25" />
+          <div className="relative mx-auto max-w-7xl">
+            <h2 className="font-heading text-center text-4xl text-white drop-shadow-[0_2px_10px_rgba(0,0,0,0.45)]">
               What We Offer
             </h2>
             <div
-              className="mx-auto mt-4 h-1.5 w-24 rounded-full bg-gradient-to-r from-red-900/30 via-red-700/55 to-red-900/30"
+              className="mx-auto mt-4 h-1.5 w-24 rounded-full bg-gradient-to-r from-[#B8960C]/35 via-[#F5E6B3]/85 to-[#B8960C]/35"
               aria-hidden
             />
             <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {offers.map((item) => (
                 <div
                   key={item.title}
-                  className="rounded-2xl border border-[#B8960C]/55 border-t-red-800/45 bg-gradient-to-br from-white via-[#FFF8F8] to-[#F5E6B3]/40 p-6 shadow-[inset_0_2px_0_0_rgba(153,27,27,0.14)] transition duration-300 hover:-translate-y-1 hover:border-t-red-700/55 hover:to-[#F5E6B3]/55"
+                  className="rounded-2xl border border-[#F5E6B3]/45 bg-white/92 p-6 text-[#1A1A2E] shadow-xl backdrop-blur-[2px] transition duration-300 hover:-translate-y-1 hover:border-[#F5E6B3]/65 hover:bg-white"
                 >
-                  <item.icon className="h-9 w-9 text-red-900/80" />
+                  <item.icon className="h-9 w-9 text-[#123A67]" />
                   <h3 className="mt-4 text-2xl font-semibold text-[#123A67]">{item.title}</h3>
                   <p className="mt-2 text-sm text-slate-700">{item.text}</p>
                 </div>
