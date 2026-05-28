@@ -19,8 +19,24 @@ export default function GalleryPage() {
     <div className="bg-gradient-to-b from-white via-[#FFF8E1] to-white text-[#1A1A2E]">
       <SiteNav />
       <main className="mx-auto max-w-7xl px-6 py-16">
-        <h1 className="font-heading text-5xl text-[#123A67]">Gallery</h1>
-        <p className="mt-3 text-slate-700">Architectural and lifestyle renders of Kilimani Walk.</p>
+        <section className="relative overflow-hidden rounded-3xl border border-[#B8960C]/35">
+          <div className="relative min-h-64 md:min-h-72">
+            <Image
+              src="/hero-kilimani-walk.png"
+              alt="Kilimani Walk gallery backdrop"
+              fill
+              className="object-cover"
+              priority
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#123A67]/70 via-[#1A1A2E]/60 to-[#B8960C]/45" />
+            <div className="relative z-10 px-6 py-10 text-white md:px-10 md:py-12">
+              <h1 className="font-heading text-5xl">Gallery</h1>
+              <p className="mt-3 max-w-2xl text-slate-100">
+                Architectural and lifestyle renders of Kilimani Walk.
+              </p>
+            </div>
+          </div>
+        </section>
 
         <div className="mt-10 columns-1 gap-4 space-y-4 md:columns-2 lg:columns-3">
           {images.map((img) => (

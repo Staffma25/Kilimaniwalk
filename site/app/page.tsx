@@ -11,15 +11,41 @@ import SiteFooter from "./components/SiteFooter";
 import SiteNav from "./components/SiteNav";
 
 const offers = [
-  { icon: Store, title: "Retail", text: "Prime customer-facing units for high-impact brands." },
-  { icon: Coffee, title: "Dining", text: "Terrace-ready concepts for modern food experiences." },
-  { icon: Clapperboard, title: "Entertainment", text: "Destination spaces for social and family leisure." },
-  { icon: Building2, title: "Offices", text: "Professional suites designed for ambitious businesses." },
-  { icon: Landmark, title: "Conference", text: "Flexible halls and meeting rooms for events." },
+  {
+    icon: Store,
+    title: "Retail",
+    text: "Prime customer-facing units for high-impact brands.",
+    image: "/offer-retail.png",
+  },
+  {
+    icon: Coffee,
+    title: "Dining",
+    text: "Terrace-ready concepts for modern food experiences.",
+    image: "/WhatsApp Image 2026-02-17 at 14.44.43 (2).jpeg",
+  },
+  {
+    icon: Clapperboard,
+    title: "Entertainment",
+    text: "Destination spaces for social and family leisure.",
+    image: "/offer-entertainment-v2.png",
+  },
+  {
+    icon: Building2,
+    title: "Offices",
+    text: "Professional suites designed for ambitious businesses.",
+    image: "/offer-offices.png",
+  },
+  {
+    icon: Landmark,
+    title: "Conference",
+    text: "Flexible halls and meeting rooms for events.",
+    image: "/offer-conference-v2.png",
+  },
   {
     icon: Car,
     title: "Visitor Parking",
     text: "Convenient on-site visitor parking supports easy access for customers and guests.",
+    image: "/offer-parking.png",
   },
 ];
 
@@ -134,33 +160,43 @@ export default function Home() {
 
         <div className="gold-divider" />
 
-        <section className="relative overflow-hidden px-6 py-20 text-white">
-          <Image
-            src="/hero-kilimani-walk.png"
-            alt=""
-            fill
-            className="object-cover"
-            aria-hidden
-          />
-          <div className="absolute inset-0 bg-[#0E1D33]/76" />
-          <div className="absolute inset-0 bg-gradient-to-br from-[#123A67]/45 via-[#1A1A2E]/55 to-[#B8960C]/25" />
+        <section className="relative overflow-hidden bg-gradient-to-br from-white via-[#FFF7D6] to-[#FFFDF5] px-6 py-20 text-[#1A1A2E]">
+          <div className="pointer-events-none absolute -left-10 top-10 h-40 w-40 rounded-full bg-[#F5E6B3]/60 blur-3xl" />
+          <div className="pointer-events-none absolute -right-8 bottom-10 h-36 w-36 rounded-full bg-[#B8960C]/25 blur-3xl" />
+          <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#B8960C]/60 to-transparent" />
           <div className="relative mx-auto max-w-7xl">
-            <h2 className="font-heading text-center text-4xl text-white drop-shadow-[0_2px_10px_rgba(0,0,0,0.45)]">
+            <p className="text-center text-xs font-semibold uppercase tracking-[0.22em] text-[#B8960C]">
+              Leasing Mix
+            </p>
+            <h2 className="font-heading text-center text-4xl text-[#123A67] md:text-5xl">
               What We Offer
             </h2>
             <div
-              className="mx-auto mt-4 h-1.5 w-24 rounded-full bg-gradient-to-r from-[#B8960C]/35 via-[#F5E6B3]/85 to-[#B8960C]/35"
+              className="mx-auto mt-4 h-1.5 w-24 rounded-full bg-gradient-to-r from-[#B8960C]/45 via-[#F5E6B3] to-[#B8960C]/45"
               aria-hidden
             />
             <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              {offers.map((item) => (
+              {offers.map((item, index) => (
                 <div
                   key={item.title}
-                  className="rounded-2xl border border-[#F5E6B3]/45 bg-white/92 p-6 text-[#1A1A2E] shadow-xl backdrop-blur-[2px] transition duration-300 hover:-translate-y-1 hover:border-[#F5E6B3]/65 hover:bg-white"
+                  className="offer-card group rounded-2xl border border-[#B8960C]/30 bg-gradient-to-br from-white via-[#FFFDF7] to-[#FDF7DD] p-6 text-[#1A1A2E] shadow-md transition duration-300 hover:-translate-y-1.5 hover:border-[#B8960C]/65 hover:shadow-xl"
+                  style={{ animationDelay: `${index * 90}ms` }}
                 >
-                  <item.icon className="h-9 w-9 text-[#123A67]" />
+                  <div className="relative -mx-3 -mt-3 mb-4 aspect-[16/10] overflow-hidden rounded-xl border border-[#B8960C]/25 bg-white">
+                    <Image
+                      src={encodeURI(item.image)}
+                      alt={`${item.title} at Kilimani Walk`}
+                      fill
+                      className="object-cover transition duration-500 group-hover:scale-105"
+                      sizes="(max-width: 768px) 100vw, 33vw"
+                    />
+                    <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#1A1A2E]/35 via-transparent to-transparent" />
+                  </div>
+                  <div className="inline-flex rounded-xl border border-[#B8960C]/35 bg-gradient-to-br from-[#F5E6B3]/60 to-white p-3 shadow-sm transition group-hover:scale-105">
+                    <item.icon className="h-8 w-8 text-[#123A67]" />
+                  </div>
                   <h3 className="mt-4 text-2xl font-semibold text-[#123A67]">{item.title}</h3>
-                  <p className="mt-2 text-sm text-slate-700">{item.text}</p>
+                  <p className="mt-2 text-sm leading-relaxed text-slate-700">{item.text}</p>
                 </div>
               ))}
             </div>

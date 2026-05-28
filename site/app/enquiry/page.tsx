@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Download, Mail, MessageCircle } from "lucide-react";
+import { Download, Mail, MapPin, MessageCircle } from "lucide-react";
 import SiteFooter from "../components/SiteFooter";
 import SiteNav from "../components/SiteNav";
 
@@ -96,6 +96,31 @@ export default function EnquiryPage() {
             </ul>
           </section>
         </div>
+
+        <section className="mt-6 overflow-hidden rounded-xl border border-[#B8960C]/40 bg-gradient-to-br from-white to-[#FFF8E1]/45 shadow-sm">
+          <div className="border-b border-[#B8960C]/25 px-4 py-4 md:px-5">
+            <div className="flex items-start gap-3">
+              <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-[#B8960C]/15 text-[#B8960C]">
+                <MapPin className="h-5 w-5" strokeWidth={2} />
+              </span>
+              <div>
+                <h2 className="font-heading text-lg text-[#123A67] md:text-xl">Visit our office</h2>
+                <p className="mt-1 text-xs text-slate-600 md:text-sm">
+                  Sifa Towers, 5th Floor, Suite 5E
+                </p>
+              </div>
+            </div>
+          </div>
+          <div className="relative h-72 w-full md:h-96">
+            <iframe
+              title="Kilimani Walk office map"
+              src="https://maps.google.com/maps?q=Sifa%20Towers%20Nairobi&t=&z=16&ie=UTF8&iwloc=&output=embed"
+              className="h-full w-full border-0"
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            />
+          </div>
+        </section>
       </main>
       <SiteFooter />
     </div>

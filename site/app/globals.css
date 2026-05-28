@@ -120,3 +120,18 @@ html {
 .hero-parallax {
   animation: heroDrift 14s ease-in-out infinite;
 }
+
+@keyframes offerFloatIn {
+  from {
+    opacity: 0;
+    transform: translateY(14px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.offer-card {
+  animation: offerFloatIn 700ms ease-out both;
+}
